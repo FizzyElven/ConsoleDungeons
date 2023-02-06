@@ -131,6 +131,7 @@ void Game::encounter(Enemy* enemy, Character *character, Interface *screen)
 {
 	system("CLS");
 	battle(character, enemy, screen);
+	cout << endl;
 	system("pause");
 	system("CLS");
 }
@@ -139,7 +140,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 {
 	char i;
 	char j;
-	char k;
+	//char k;
 	combat = true;
 	do {
 		system("CLS");
@@ -155,6 +156,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 			if (character->getClass() == "warrior")
 			{
 				cout << "Choose attack type:\n1. Light attack (10st)\n2. Power attack(20st)" << endl;
+				do {
 				cin >> j;
 				switch (j)
 				{
@@ -185,43 +187,51 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 				default:
 				{cout << "Invalid choice" << endl; break; }
 				}
+			} while (j != '1' && j != '2');
 			}
 			else if (character->getClass() == "archer")
 			{
 				cout << "Choose attack type:\n1. Single shot (5st)\n2. Triple shot (15st)" << endl;
-				cin >> j;
-				switch (j)
-				{
-				case '1':
-				{
-					if (character->getStamina() >= 5 && character->getArrows() >= 1)
+				do {
+					cin >> j;
+					switch (j)
 					{
-						enemy->hp -= character->dmg;
-						character->setStamina(character->getStamina() - 5);
-						character->setArrows(character->getArrows() - 1);
-						Sleep(1000);
-					}
-					else { cout << "Not enoght stamina or arrows" << endl; Sleep(1000);
-					}
-					break;
-				}
-				case '2':
-				{
-					if (character->getStamina() >= 15 && character->getArrows() >= 3)
+					case '1':
 					{
-						enemy->hp -= character->dmg * 3;
-						character->setStamina(character->getStamina() - 15);
-						character->setArrows(character->getArrows() - 3);
-						Sleep(1000);
+						if (character->getStamina() >= 5 && character->getArrows() >= 1)
+						{
+							enemy->hp -= character->dmg;
+							character->setStamina(character->getStamina() - 5);
+							character->setArrows(character->getArrows() - 1);
+							Sleep(1000);
+						}
+						else {
+							cout << "Not enoght stamina or arrows" << endl; Sleep(1000);
+						}
+						break;
 					}
-					else { cout << "Not enoght stamina or arrows" << endl; Sleep(1000);
+					case '2':
+					{
+						if (character->getStamina() >= 15 && character->getArrows() >= 3)
+						{
+							enemy->hp -= character->dmg * 3;
+							character->setStamina(character->getStamina() - 15);
+							character->setArrows(character->getArrows() - 3);
+							Sleep(1000);
+						}
+						else {
+							cout << "Not enoght stamina or arrows" << endl; Sleep(1000);
+						}
+						break;
 					}
-					break;
-				}
-				default:
-				{cout << "Invalid choice" << endl; break; }
-				}
-				
+					default:
+					{
+						cout << "Invalid choice" << endl;
+						break;
+					}
+
+					}
+				} while (j != '1' && j != '2');
 			}
 			else if (character->getClass() == "mage")
 			{
@@ -235,12 +245,16 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 			cout << "Your defence incresed by 10" << endl;
 			break;
 		}
+		case '3':
+		{
+
+		}
 		}
 		if (enemy->hp > 0)
 		{
 			if (i == '2') 
 			{
-				if (character->defence >= enemy->dmg)
+				if (character->defence+10 >= enemy->dmg)
 				{
 					cout << "Your defense absorbed all the damage" << endl;
 				}
@@ -261,6 +275,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 				}
 				}
 		}
+		
 		if (character->getStamina() <= character->getMaxStamina() - 5) 
 		{
 			character->setStamina(character->getStamina() + 5);
@@ -283,7 +298,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 
 		combat = false; 
 		}
-	}while(combat != false);
+	} while(combat != false);
 }
 
 void Game::swamp()

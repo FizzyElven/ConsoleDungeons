@@ -182,8 +182,9 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 					}
 					break;
 				}
+				default:
+				{cout << "Invalid choice" << endl; break; }
 				}
-				
 			}
 			else if (character->getClass() == "archer")
 			{
@@ -217,6 +218,8 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 					}
 					break;
 				}
+				default:
+				{cout << "Invalid choice" << endl; break; }
 				}
 				
 			}
@@ -235,11 +238,28 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 		}
 		if (enemy->hp > 0)
 		{
-			if (i == '2') { character->setHp(character->getHp() - ((character->defence*2) - enemy->dmg)); }
-			else 
+			if (i == '2') 
 			{
-				character->setHp(character->getHp() - (character->defence - enemy->dmg));
+				if (character->defence >= enemy->dmg)
+				{
+					cout << "Your defense absorbed all the damage" << endl;
+				}
+				else
+				{
+					character->setHp(character->getHp() - (character->defence*2 - enemy->dmg));
+				}
 			}
+			else
+			{
+				if(character->defence>=enemy->dmg)
+				{
+					cout << "Your defense absorbed all the damage" << endl;
+				}
+				else
+				{
+					character->setHp(character->getHp() - (character->defence - enemy->dmg));
+				}
+				}
 		}
 		if (character->getStamina() <= character->getMaxStamina() - 5) 
 		{

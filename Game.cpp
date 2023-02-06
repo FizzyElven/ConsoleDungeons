@@ -246,7 +246,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 				}
 				else
 				{
-					character->setHp(character->getHp() - (character->defence*2 - enemy->dmg));
+					character->setHp(character->getHp() - (character->defence+10 - enemy->dmg));
 				}
 			}
 			else

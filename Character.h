@@ -1,7 +1,8 @@
 #pragma once
-#include "Weapon.h"
+#include <iostream>
 #include <windows.h>
 #include <string>
+using namespace std;
 
 class Character
 {
@@ -22,7 +23,7 @@ public:
 		getHp(),getTotalHp(), getMaxHp(),
 		getMp(), getStamina(), getArrows(),
 		getMaxMp(), getMaxStamina(), getMaxArrows();
-
+	int overXp;
 	int heal(int heal)
 	{
 		setHp(getHp() + heal);
@@ -30,7 +31,8 @@ public:
 	}
 
 	Character();
-
+	int dmg;
+	int defence;
 	//virtual void HUD();
 	void rest();
 	void restoreStamina(int restStamina)

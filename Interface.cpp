@@ -12,9 +12,11 @@ void Interface::hud(Character* character)
 	cout << "| Level: " << character->getLevel() << endl;
 	cout << "| XP: " << character->getXp() << "/" << character->getXpToUp() << endl;
 	cout << "| Stamina: " << character->getStamina() << "/" << character->getMaxStamina() << endl;
+	cout << "| Dmg: " << character->dmg << endl;
+	cout << "| Defence: " << character->defence << endl;
 	if (character->getClass() == "mage") {
 		cout << "| Mana: " << character->getMp() << "/" << character->getMaxMp() << endl;
-		for (int i = 1; i < 8; i++)
+		for (int i = 1; i < 10; i++)
 		{
 			setcur(18, i);
 			cout << " |";
@@ -22,14 +24,15 @@ void Interface::hud(Character* character)
 	}
 	else if (character->getClass() == "archer") {
 		cout << "| Arrows: " << character->getArrows() << "/" << character->getMaxArrows() << endl;
-		for (int i = 1; i < 8; i++)
+		for (int i = 1; i < 10; i++)
 		{
 			setcur(18, i);
 			cout << " |";
 		}
 	}
 	else {
-		for (int i = 1; i < 7; i++)
+		cout << "WE" << endl;
+		for (int i = 1; i < 9; i++)
 		{
 			setcur(18, i);
 			cout << " |";
@@ -54,7 +57,7 @@ void Interface::enemyHud(Enemy* enemy)
 	cout << "| HP: " << enemy->hp<< "/" << enemy->maxHp << endl;
 	for (int i = 1; i < 3; i++)
 	{
-		setcur(45, i);
+		setcur(43, i);
 		cout << " |";
 	}
 	cout << endl;

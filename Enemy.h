@@ -8,10 +8,16 @@ class Enemy
 	
 public:
 	int rEnemy;
-	int maxHp, hp, dmg, critDmg;
+	int maxHp, hp, dmg, critDmg,exp;
 	string name;
 	Enemy();
 	virtual ~Enemy();
-	void battle();
+	
 };
 
+class ForestEnemy : public Enemy
+{
+
+public:
+	ForestEnemy();
+};

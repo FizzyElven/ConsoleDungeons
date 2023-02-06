@@ -16,6 +16,8 @@ Character::Character()
 	this->maxMana = 0;
 	this->maxStamina = 0;
 	this->maxArrows = 0;
+	this->dmg = 0;
+	this->defence = 0;
 	cout << "contructor worked" << endl;
 }
 
@@ -40,6 +42,8 @@ void Character::selectClass()
 			this->maxHp = 200;
 			this->stamina = 135;
 			this->maxStamina = (125+(10*level));
+			this->dmg = 10 + (5 * level);
+			this->defence = 8+(3*level);
 			break;
 		}
 		case '2':
@@ -52,8 +56,10 @@ void Character::selectClass()
 			this->xpToUp = (100 * level);
 			this->stamina = 110;
 			this->maxStamina = (100 +(10 * level));
-			this->arrows = 10;
+			this->arrows = 35;
 			this->maxArrows = (30 + (5 *level));
+			this->dmg = 15 + (7 * level);
+			this->defence = 4 + (2 * level);
 			break;
 		}
 		case '3':
@@ -64,10 +70,12 @@ void Character::selectClass()
 			this->maxHp = totalHp;
 			this->xp = 0;
 			this->xpToUp = (100 * level);
-			this->mana = 0;
+			this->mana = 110;
 			this->maxMana = (100 + (10 * level));
 			this->stamina = 110;
 			this->maxStamina = (100 + (10 * level));
+			this->dmg = 20 + (10 * level);
+			this->defence = 1 + (1 * level);
 			break;
 		}
 		default:

@@ -10,6 +10,7 @@ int main()
 	Game game;
 	Character player;
 	Interface screen;
+	SomeVals vals;
 	color(3);
 	//START GAME//
 	cout << "======CONSOLE DUNGEONS======" << endl << endl;
@@ -29,7 +30,7 @@ int main()
 	{
 	system("CLS");
 	screen.hud(&player);
-	game.base(&player, &screen);
+	game.base(&player, &screen, &vals);
 	Sleep(1000);
 	}
 }

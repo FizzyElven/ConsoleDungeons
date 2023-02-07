@@ -24,10 +24,9 @@ public:
 		getMp(), getStamina(), getArrows(),
 		getMaxMp(), getMaxStamina(), getMaxArrows();
 	int overXp;
-	int heal(int heal)
+	void heal(int heal)
 	{
 		setHp(getHp() + heal);
-		return getHp();
 	}
 
 	Character();
@@ -54,31 +53,31 @@ public:
 		{
 			overXp = getXp() - getXpToUp();
 			setLevel(getLevel() + 1);
-			setXp(getXp() - getXpToUp());
-			setXp(getXp() + overXp);
+			setXp(0);
+			if(overXp>0){setXp(getXp() + overXp);}
 			setXpToUp(100 * getLevel());
 			if (getClass() == "warrior") 
 			{
-				setMaxHp(getMaxHp() + (10 * level));
-				setMaxStamina(getMaxStamina()+ (10 * level));
-				dmg += (5 * level);
-				defence += + (3 * level);
+				setMaxHp(getMaxHp() + 10);
+				setMaxStamina(getMaxStamina()+ 10);
+				dmg += 5;
+				defence += 3;
 			}
 			else if (getClass() == "archer")
 			{
-				setMaxHp(getMaxHp() + (10 * level));
-				setMaxStamina(getMaxStamina() + (10 * level));
-				dmg += (7 * level);
-				defence += +(2 * level);
-				setMaxArrows(getMaxArrows() + (5 * level));
+				setMaxHp(getMaxHp() + 10);
+				setMaxStamina(getMaxStamina() + 10);
+				dmg += 7;
+				defence += 2;
+				setMaxArrows(getMaxArrows() + 5);
 			}
 			else
 			{
-				setMaxHp(getMaxHp() + (10 * level));
-				setMaxStamina(getMaxStamina() + (10 * level));
-				dmg += (10 * level);
-				defence += +(1 * level);
-				setMaxMana(getMaxMp() + (10 * level));
+				setMaxHp(getMaxHp() + 10);
+				setMaxStamina(getMaxStamina() + 10);
+				dmg += 10;
+				defence += 1;
+				setMaxMana(getMaxMp() + 10);
 			}
 		}
 	}

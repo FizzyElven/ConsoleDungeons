@@ -26,6 +26,7 @@ void Game::base(Character *character, Interface *screen, SomeVals *vals)
 		{
 			Forest *forest = new Forest(character, screen, vals);
 			//forest(character, screen);
+			delete forest;
 			break;
 		}
 		case '2':

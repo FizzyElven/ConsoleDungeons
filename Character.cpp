@@ -229,8 +229,8 @@ void Character::rest()
 		cout << "You have restored " << (getMaxHp() - getHp()) << "hp" << endl;
 		heal(getMaxHp() - getHp());
 	}
-	restoreStamina(getMaxStamina()-getStamina());
-	cout << "You have recovered " << getMaxStamina() - getStamina() <<  "stamina" << endl;
+	cout << "You have recovered " << getMaxStamina() - getStamina() <<  " stamina" << endl;
+	restoreStamina(getMaxStamina() - getStamina());
 	if (getClass() == "archer")
 	{
 		if(getArrows() <=getMaxArrows()-(3 * getLevel())) 

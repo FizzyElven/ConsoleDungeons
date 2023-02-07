@@ -1,10 +1,7 @@
 #pragma once
 
 #include <conio.h>
-#include "Character.h"
-#include "Interface.h"
-#include "Enemy.h"
-#include "SomeVals.h"
+#include "BattleSystem.h"
 using namespace std;
 
 class Locations
@@ -16,7 +13,6 @@ public:
 	Locations(Character* character, Interface* screen, SomeVals* vals);
 	int locationCounter;
 	string locationName;
-	bool combat;
 	void battle(Character* character, Enemy* enemy, Interface* screen);
 	void BossFight();
 	void moveForward(Character* character, Interface* screen, SomeVals* vals);

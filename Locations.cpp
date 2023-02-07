@@ -59,7 +59,7 @@ void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 			}
 			case '2':
 			{
-				cout << "You rest the time";
+				cout << "You rest the time" << endl;
 				Sleep(1000);
 				character->rest();
 				Sleep(2000);

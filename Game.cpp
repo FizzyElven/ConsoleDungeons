@@ -185,7 +185,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 					break;
 				}
 				default:
-				{cout << "Invalid choice" << endl; break; }
+				{cout << "Invalid choice" << endl; Sleep(1000); break; }
 				}
 			} while (j != '1' && j != '2');
 			}
@@ -227,6 +227,7 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 					default:
 					{
 						cout << "Invalid choice" << endl;
+						Sleep(1000);
 						break;
 					}
 
@@ -243,44 +244,50 @@ void Game::battle(Character* character, Enemy* enemy, Interface* screen)
 		case '2':
 		{
 			cout << "Your defence incresed by 10" << endl;
+			Sleep(1000);
 			break;
 		}
 		case '3':
 		{
-
+			cout << "item menu" << endl;
+			Sleep(1000);
+			break;
 		}
+		default: {cout << "Invalid choice" << endl; break; }
 		}
 		if (enemy->hp > 0)
 		{
 			if (i == '2') 
 			{
-				if (character->defence+10 >= enemy->dmg)
+				if ((character->defence+10) >= enemy->dmg)
 				{
 					cout << "Your defense absorbed all the damage" << endl;
+					Sleep(1000);
 				}
 				else
 				{
-					character->setHp(character->getHp() - (character->defence+10 - enemy->dmg));
+					character->setHp(character->getHp() - ((character->defence+10) - enemy->dmg));
 				}
 			}
 			else
 			{
-				if(character->defence>=enemy->dmg)
+				if ((character->defence) >= enemy->dmg)
 				{
 					cout << "Your defense absorbed all the damage" << endl;
+					Sleep(1000);
 				}
 				else
 				{
-					character->setHp(character->getHp() - (character->defence - enemy->dmg));
+					character->setHp(character->getHp() - ((character->defence) - enemy->dmg));
 				}
-				}
+			}
 		}
 		
 		if (character->getStamina() <= character->getMaxStamina() - 5) 
 		{
 			character->setStamina(character->getStamina() + 5);
 		}
-		else character->setStamina(character->getMaxStamina() - character->getStamina());
+		else character->setStamina(character->getMaxStamina());
 		
 		if (enemy->hp <= 0) 
 		{ 

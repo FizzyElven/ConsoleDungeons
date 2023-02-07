@@ -48,7 +48,40 @@ public:
 		setArrows(getArrows() + makeArrow);
 	}
 	virtual ~Character();
-	
+	void lvlup() 
+	{ 
+		if (getXp() >= getXpToUp())
+		{
+			overXp = getXp() - getXpToUp();
+			setLevel(getLevel() + 1);
+			setXp(getXp() - getXpToUp());
+			setXp(getXp() + overXp);
+			setXpToUp(100 * getLevel());
+			if (getClass() == "warrior") 
+			{
+				setMaxHp(getMaxHp() + (10 * level));
+				setMaxStamina(getMaxStamina()+ (10 * level));
+				dmg += (5 * level);
+				defence += + (3 * level);
+			}
+			else if (getClass() == "archer")
+			{
+				setMaxHp(getMaxHp() + (10 * level));
+				setMaxStamina(getMaxStamina() + (10 * level));
+				dmg += (7 * level);
+				defence += +(2 * level);
+				setMaxArrows(getMaxArrows() + (5 * level));
+			}
+			else
+			{
+				setMaxHp(getMaxHp() + (10 * level));
+				setMaxStamina(getMaxStamina() + (10 * level));
+				dmg += (10 * level);
+				defence += +(1 * level);
+				setMaxMana(getMaxMp() + (10 * level));
+			}
+		}
+	}
 private:
 	string name, Class;
 	int level, xp, xpToUp, hp, totalHp, 

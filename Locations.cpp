@@ -18,26 +18,26 @@ Forest::Forest(Character* character, Interface* screen, SomeVals* vals)
 {
 	locationName = "forest";
 	this->locationCounter = 0;
-	this->journey(character, screen, vals);
+	journey(character, screen, vals);
 	
 }
 
-void Forest::battle(Character* character, Enemy* enemy, Interface* screen)
-{
-
-}
-
-void Forest::BossFight()
-{
-}
-
-void Forest::moveForward(Character* character, Interface* screen, SomeVals* vals)
-{
-}
-
-void Forest::encounter(Enemy* enemy, Character* character, Interface* screen)
-{
-}
+//void Forest::battle(Character* character, Enemy* enemy, Interface* screen)
+//{
+//
+//}
+//
+//void Forest::BossFight()
+//{
+//}
+//
+//void Forest::moveForward(Character* character, Interface* screen, SomeVals* vals)
+//{
+//}
+//
+//void Forest::encounter(Enemy* enemy, Character* character, Interface* screen)
+//{
+//}
 
 void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 {
@@ -49,14 +49,14 @@ void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 			screen->hud(character);
 			Sleep(1000);
 			cout << "You going throw " << locationName <<"..." << endl;
-			cout << "Forest counter: " << this->locationCounter << endl;
+			cout << "Location counter: " << this->locationCounter << endl;
 			cout << "Select an option:\n1. Move forward\n2. Camp\n3. Return to base" << endl;
 			cin >> a;
 			switch (a)
 			{
 			case '1':
 			{
-				moveForward(character, screen, vals);
+				this->moveForward(character, screen, vals);
 				break;
 			}
 			case '2':
@@ -98,9 +98,21 @@ void Locations::moveForward(Character* character, Interface* screen, SomeVals* v
 	{
 		cout << "You see the enemy, prepare to battle!" << endl;
 		Sleep(1000);
-		ForestEnemy* enemy = new ForestEnemy;
-		encounter(enemy, character, screen);
-		delete enemy;
+		if (locationName == "forest") {
+			ForestEnemy* enemy = new ForestEnemy;
+			encounter(enemy, character, screen);
+			delete enemy;
+		}
+		else if (locationName == "swamp") {
+			ForestEnemy* enemy = new ForestEnemy;
+			encounter(enemy, character, screen);
+			delete enemy;
+		}
+		else if (locationName == "dead town") {
+			ForestEnemy* enemy = new ForestEnemy;
+			encounter(enemy, character, screen);
+			delete enemy;
+		}
 		this->locationCounter++;
 	}
 	else
@@ -282,13 +294,7 @@ void Locations::battle(Character* character, Enemy* enemy, Interface* screen)
 			screen->enemyHud(enemy);
 			Sleep(1000);
 			character->setXp(character->getXp() + enemy->exp);
-			if (character->getXp() >= character->getXpToUp())
-			{
-				character->overXp = character->getXp() - character->getXpToUp();
-				character->setLevel(character->getLevel() + 1);
-				character->setXp(character->getXp() - character->getXpToUp());
-				character->setXp(character->getXp() + character->overXp);
-			}
+			character->lvlup();
 
 			combat = false;
 		}

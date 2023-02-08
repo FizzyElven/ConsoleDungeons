@@ -219,10 +219,10 @@ int Character::getXp()
 
 void Character::rest()
 {
-	if (getHp() <= getMaxHp() - 10) 
+	if (getHp() <= getMaxHp() - (10*getLevel())) 
 	{
-		cout << "You have restored 10hp" << endl;
-		heal(10);
+		cout << "You have restored"<< 10*getLevel() << "hp" << endl;
+		heal(10*getLevel());
 	}
 	else
 	{

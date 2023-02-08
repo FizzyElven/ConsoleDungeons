@@ -26,8 +26,7 @@ private:
 	
 public:
 	Forest(Character* character, Interface* screen, SomeVals* vals);
-	/*void battle(Character* character, Enemy* enemy, Interface* screen);
-	void BossFight();
+	/*void BossFight();
 	void moveForward(Character* character, Interface* screen, SomeVals* vals) ;
 	void encounter(Enemy* enemy, Character* character, Interface* screen) ;*/
 

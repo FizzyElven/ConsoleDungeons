@@ -1,5 +1,4 @@
 #include "Enemy.h"
-#include "Interface.h"
 
 Enemy::Enemy()
 {
@@ -12,7 +11,7 @@ Enemy::Enemy()
 }
 ForestEnemy::ForestEnemy()
 {
-	rEnemy = rand() % 3 + 1;
+	rEnemy = rand() % 5 + 1;
 	if (rEnemy == 1)
 	{
 		this->name = "Wolf";
@@ -39,6 +38,24 @@ ForestEnemy::ForestEnemy()
 		this->maxHp = 50; 
 		this->dmg = 5; 
 		this->critDmg = 15; }
+	else if (rEnemy == 4)
+	{
+		this->name = "Bear";
+		this->exp = 125;
+		this->hp = 250;
+		this->maxHp = 250;
+		this->dmg = 24;
+		this->critDmg = 48;
+	}
+	else if (rEnemy == 5)
+	{
+		this->name = "Goblin";
+		this->exp = 75;
+		this->hp = 125;
+		this->maxHp = 125;
+		this->dmg = 16;
+		this->critDmg = 40;
+	}
 }
 
 Enemy::~Enemy()

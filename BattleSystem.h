@@ -3,6 +3,7 @@
 #include "Interface.h"
 #include "Enemy.h"
 #include "SomeVals.h"
+#include < stdlib.h >
 
 
 class BattleSystem
@@ -18,5 +19,6 @@ public:
 	void warriorAttack(Character* character, Enemy* enemy);
 	void archerAttack(Character* character, Enemy* enemy);
 	void mageAttack(Character* character, Enemy* enemy);
+	
 };
 

@@ -55,6 +55,7 @@ void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 			case '1':
 			{
 				this->moveForward(character, screen, vals);
+				
 				break;
 			}
 			case '2':
@@ -83,43 +84,50 @@ void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 		}
 	}
 }
+
 void Locations::moveForward(Character* character, Interface* screen, SomeVals* vals)
 {
 	srand(time(NULL));
 	vals->rVal = rand() % 100 + 1;
-	if (vals->rVal <= 20)
+	if (vals->rVal <= 30)
 	{
 		cout << "Nothing happend..." << endl;
 		this->locationCounter++;
 		Sleep(1000);
 	}
-	else if (vals->rVal >=21 && vals->rVal <= 80)
+	else if (vals->rVal >=31 && vals->rVal <= 80)
 	{
-		cout << "You see the enemy, prepare to battle!" << endl;
-		Sleep(1000);
-		if (locationName == "forest") {
-			ForestEnemy* enemy = new ForestEnemy;
-			encounter(enemy, character, screen);
-			delete enemy;
-		}
-		else if (locationName == "swamp") {
-			ForestEnemy* enemy = new ForestEnemy;
-			encounter(enemy, character, screen);
-			delete enemy;
-		}
-		else if (locationName == "dead town") {
-			ForestEnemy* enemy = new ForestEnemy;
-			encounter(enemy, character, screen);
-			delete enemy;
-		}
-		this->locationCounter++;
+		meetMonster(character, screen);
 	}
 	else
 	{
 		cout << "You find a chest" << endl;
+		chest(character, screen);
 		Sleep(1000);
 		this->locationCounter++;
 	}
+}
+
+void Locations::meetMonster(Character* character, Interface* screen)
+{
+	cout << "You see the enemy, prepare to battle!" << endl;
+	Sleep(1000);
+	if (locationName == "forest") {
+		ForestEnemy* enemy = new ForestEnemy;
+		encounter(enemy, character, screen);
+		delete enemy;
+	}
+	else if (locationName == "swamp") {
+		ForestEnemy* enemy = new ForestEnemy;
+		encounter(enemy, character, screen);
+		delete enemy;
+	}
+	else if (locationName == "dead town") {
+		ForestEnemy* enemy = new ForestEnemy;
+		encounter(enemy, character, screen);
+		delete enemy;
+	}
+	this->locationCounter++;
 }
 
 void Locations::encounter(Enemy* enemy, Character* character, Interface* screen)
@@ -131,6 +139,71 @@ void Locations::encounter(Enemy* enemy, Character* character, Interface* screen)
 	system("pause");
 	system("CLS");
 	delete battleWithMonster;
+}
+
+void Locations::chest(Character* character, Interface* screen)
+{
+	char chestChoice;
+	do {
+		cout << "1. Open the chest\n2. Go away" << endl;
+		cin >> chestChoice;
+		switch (chestChoice)
+		{
+			case '1':
+			{
+				int k = rand() % 12 + 1;
+				if (k == 12)
+				{
+					cout << "This chest is a mimic!" << endl;
+					Sleep(1000);
+					ChestEnemy* mimic = new ChestEnemy;
+					encounter(mimic, character, screen);
+				}
+				else if (k <= 3)
+				{
+					cout << "Chest is empty" << endl;
+					Sleep(1000);
+				}
+				else if (k <= 5)
+				{
+					cout << "You find healing potion and heal " <<character->getMaxHp()-character->getHp() << "hp" << endl;
+					character->heal(character->getMaxHp() - character->getHp());
+					Sleep(1000);
+				}
+				else if (k <= 7)
+				{
+					cout << "You find material for upgrade your weapon." << endl;
+					cout << "Your damage has been increased by 5" << endl;
+					character->dmg += 5;
+					Sleep(1000);
+				}
+				else if (k <= 9)
+				{
+					cout << "You find material for upgrade your armor." << endl;
+					cout << "Your defence has been increased by 2" << endl;
+					character->defence += 2;
+					Sleep(1000);
+				}
+				else if (k <= 11)
+				{
+					cout << "The chest turned out to be empty, besides, you understand that you were ambushed" << endl;
+					Sleep(1000);
+					meetMonster(character, screen);
+				};
+				break;
+			}
+			case '2':
+			{
+				cout << "You decide not to open the chest and move on" << endl;
+				Sleep(1000);
+			}
+			default:
+			{
+				cout << "Invalid choice" << endl;
+				Sleep(1000);
+			}
+		}
+	} while (chestChoice != '1' && chestChoice != '2');
 }
 
 void Locations::BossFight()

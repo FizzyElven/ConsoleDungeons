@@ -16,6 +16,13 @@ public:
 	
 };
 
+class ChestEnemy :public Enemy
+{
+public:
+	ChestEnemy();
+
+};
+
 class ForestEnemy : public Enemy
 {
 

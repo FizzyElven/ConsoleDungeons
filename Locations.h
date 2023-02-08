@@ -16,8 +16,9 @@ public:
 	void BossFight();
 	void moveForward(Character* character, Interface* screen, SomeVals* vals);
 	void encounter(Enemy* enemy, Character* character, Interface* screen);
-	
+	void chest(Character* character, Interface* screen);
 	void journey(Character* character, Interface* screen, SomeVals* vals);
+	void meetMonster(Character* character, Interface* screen);
 };
 
 class Forest :public Locations

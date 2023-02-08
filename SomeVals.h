@@ -11,6 +11,6 @@ public:
 	virtual ~SomeVals();
 
 	bool travel;
-	int rVal;
+	unsigned int rVal;
 };
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <string>
+#include "Enemy.h"
 using namespace std;
 
 class Character
@@ -32,6 +33,7 @@ public:
 	Character();
 	int dmg;
 	int defence;
+	bool isEscape;
 	//virtual void HUD();
 	void rest();
 	void restoreStamina(int restStamina)
@@ -47,6 +49,7 @@ public:
 		setArrows(getArrows() + makeArrow);
 	}
 	virtual ~Character();
+	void escape(Enemy* enemy);
 	void lvlup() 
 	{ 
 		if (getXp() >= getXpToUp())

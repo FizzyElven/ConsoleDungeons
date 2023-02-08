@@ -57,6 +57,15 @@ ForestEnemy::ForestEnemy()
 		this->critDmg = 40;
 	}
 }
+ChestEnemy::ChestEnemy()
+{
+	this->name = "Mimic";
+	this->exp = 200;
+	this->hp = 200;
+	this->maxHp = 200;
+	this->dmg = 50;
+	this->critDmg = 75;
+}
 
 Enemy::~Enemy()
 {

@@ -255,3 +255,20 @@ void Character::rest()
 		}
 	}
 }
+void Character::escape(Enemy* enemy)
+{
+	unsigned int esc = rand() % 5 + 1;
+	cout << "You try escape..." << endl;
+	if (esc<=3)
+	{
+		cout << "Escape successful" << endl;
+		isEscape = true;
+	}
+	else
+	{
+		cout << "The escape attempt was unsuccessful" << endl;
+		cout << "Enemy deals " << enemy->critDmg << " critical damage to your back" << endl;
+		setHp(getHp()-enemy->critDmg);
+		isEscape = false;
+	}
+}

@@ -13,19 +13,20 @@ void BattleSystem::battle(Character* character, Enemy* enemy, Interface* screen)
 {
 	//char k;
 	combat = true;
+	character->isEscape = false;
 	do {
 		system("CLS");
 		screen->hud(character);
 		screen->enemyHud(enemy);
 		Sleep(1000);
 		battleMenu(character, enemy, screen);
-	} while (combat != false);
+	} while (combat != false && character->isEscape != true);
 }
 
-void BattleSystem::battleMenu(Character* character, Enemy* enemy)
+void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* screen)
 {
 	char i;
-	cout << "\nBattle menu:\n1. Attack\n2. Defend\n3. Use item" << endl;
+	cout << "\nBattle menu:\n1. Attack\n2. Defend\n3. Try escape" << endl;
 	cin >> i;
 	switch (i)
 	{
@@ -53,7 +54,7 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy)
 	}
 	case '3':
 	{
-		cout << "item menu" << endl;
+		character->escape(enemy);
 		Sleep(1000);
 		break;
 	}
@@ -84,6 +85,12 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy)
 			{
 				character->setHp(character->getHp() - (enemy->dmg - character->defence));
 			}
+		}
+		if (character->getHp() <= 0)
+		{
+			cout << "YOU DIED!" << endl;
+			system("pause");
+			exit(EXIT_SUCCESS);
 		}
 	}
 	//Stamina restoration
@@ -205,7 +212,7 @@ void BattleSystem::archerAttack(Character* character, Enemy* enemy)
 	} while (j != '1' && j != '2');
 }
 
-void BattleSystem::mageAttack(Character* character, Enemy* enemy, Interface* screen)
+void BattleSystem::mageAttack(Character* character, Enemy* enemy)
 {
 	char j;
 	cout << "Choose spell:\n1. Fireball (10mp&st)\n2. Lightning bolt (25mp&st)\n3. Heal (25mp&st)" << endl;
@@ -273,4 +280,3 @@ void BattleSystem::mageAttack(Character* character, Enemy* enemy, Interface* scr
 	}
 	}
 }
-

@@ -22,7 +22,7 @@ void BattleSystem::battle(Character* character, Enemy* enemy, Interface* screen)
 	} while (combat != false);
 }
 
-void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* screen)
+void BattleSystem::battleMenu(Character* character, Enemy* enemy)
 {
 	char i;
 	cout << "\nBattle menu:\n1. Attack\n2. Defend\n3. Use item" << endl;
@@ -41,71 +41,7 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* scr
 		}
 		else if (character->getClass() == "mage")
 		{
-			char j;
-			cout << "Choose spell:\n1. Fireball (10mp&st)\n2. Lightning bolt (25mp&st)\n3. Heal (25mp&st)" << endl;
-			cin >> j;
-			switch (j)
-			{
-			case '1':
-			{
-				if (character->getStamina() >= 10 && character->getMp() >= 10)
-				{
-					enemy->hp -= character->dmg;
-					character->setStamina(character->getStamina() - 10);
-					character->setMana(character->getMp() - 10);
-					cout << "You deal " << character->dmg << " damage" << endl;
-					Sleep(1000);
-				}
-				else {
-					cout << "Not enoght stamina or arrows" << endl; Sleep(1000);
-				}
-				break;
-			}
-			case '2':
-			{
-				if (character->getStamina() >= 25 && character->getMp() >= 25)
-				{
-					enemy->hp -= character->dmg * 3;
-					character->setStamina(character->getStamina() - 20);
-					character->setMana(character->getMp() - 20);
-					cout << "You deal " << character->dmg * 3 << " damage" << endl;
-					Sleep(1000);
-				}
-				else {
-					cout << "Not enoght stamina or arrows" << endl; Sleep(1000);
-				}
-				break;
-			}
-			case '3':
-			{
-				if (character->getStamina() >= 25 && character->getMp() >= 25)
-				{
-					if (character->getHp() <= character->getMaxHp() - 25)
-					{
-						cout << "You have restored 25hp" << endl;
-						character->heal(25);
-					}
-					else
-					{
-						cout << "You have restored " << (character->getMaxHp() - character->getHp()) << "hp" << endl;
-						character->heal(character->getMaxHp() - character->getHp());
-					}
-					character->setStamina(character->getStamina() - 25);
-					character->setMana(character->getMp() - 25);
-					Sleep(1000);
-				}
-				else {
-					cout << "Not enoght stamina or mp" << endl; Sleep(1000);
-				}
-				break;
-			}
-			default:
-			{
-				cout << "Invalid choice" << endl;
-				Sleep(1000);
-				break;
-			}
-			}
+			mageAttack(character, enemy);
 		}
 		break;
 	}
@@ -268,3 +204,73 @@ void BattleSystem::archerAttack(Character* character, Enemy* enemy)
 		}
 	} while (j != '1' && j != '2');
 }
+
+void BattleSystem::mageAttack(Character* character, Enemy* enemy, Interface* screen)
+{
+	char j;
+	cout << "Choose spell:\n1. Fireball (10mp&st)\n2. Lightning bolt (25mp&st)\n3. Heal (25mp&st)" << endl;
+	cin >> j;
+	switch (j)
+	{
+	case '1':
+	{
+		if (character->getStamina() >= 10 && character->getMp() >= 10)
+		{
+			enemy->hp -= character->dmg;
+			character->setStamina(character->getStamina() - 10);
+			character->setMana(character->getMp() - 10);
+			cout << "You deal " << character->dmg << " damage" << endl;
+			Sleep(1000);
+		}
+		else {
+			cout << "Not enoght stamina or mp" << endl; Sleep(1000);
+		}
+		break;
+	}
+	case '2':
+	{
+		if (character->getStamina() >= 25 && character->getMp() >= 25)
+		{
+			enemy->hp -= character->dmg * 3;
+			character->setStamina(character->getStamina() - 20);
+			character->setMana(character->getMp() - 20);
+			cout << "You deal " << character->dmg * 3 << " damage" << endl;
+			Sleep(1000);
+		}
+		else {
+			cout << "Not enoght stamina or mp" << endl; Sleep(1000);
+		}
+		break;
+	}
+	case '3':
+	{
+		if (character->getStamina() >= 25 && character->getMp() >= 25)
+		{
+			if (character->getHp() <= character->getMaxHp() - 25)
+			{
+				cout << "You have restored 25hp" << endl;
+				character->heal(25);
+			}
+			else
+			{
+				cout << "You have restored " << (character->getMaxHp() - character->getHp()) << "hp" << endl;
+				character->heal(character->getMaxHp() - character->getHp());
+			}
+			character->setStamina(character->getStamina() - 25);
+			character->setMana(character->getMp() - 25);
+			Sleep(1000);
+		}
+		else {
+			cout << "Not enoght stamina or mp" << endl; Sleep(1000);
+		}
+		break;
+	}
+	default:
+	{
+		cout << "Invalid choice" << endl;
+		Sleep(1000);
+		break;
+	}
+	}
+}
+

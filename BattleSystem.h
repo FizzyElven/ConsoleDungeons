@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "SomeVals.h"
 
+
 class BattleSystem
 {
 private:
@@ -16,6 +17,6 @@ public:
 	void battleMenu(Character* character, Enemy* enemy, Interface* screen);
 	void warriorAttack(Character* character, Enemy* enemy);
 	void archerAttack(Character* character, Enemy* enemy);
-	void mageAttack(Character* character, Enemy* enemy, Interface* screen);
+	void mageAttack(Character* character, Enemy* enemy);
 };
 

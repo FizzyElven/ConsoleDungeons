@@ -13,7 +13,8 @@ public:
 	Locations(Character* character, Interface* screen, SomeVals* vals);
 	int locationCounter;
 	string locationName;
-	void BossFight();
+	bool bossDefeated;
+	void bossFight(Character* character, Interface* screen);
 	void moveForward(Character* character, Interface* screen, SomeVals* vals);
 	void encounter(Enemy* enemy, Character* character, Interface* screen);
 	void chest(Character* character, Interface* screen);
@@ -27,8 +28,5 @@ private:
 	
 public:
 	Forest(Character* character, Interface* screen, SomeVals* vals);
-	/*void BossFight();
-	void moveForward(Character* character, Interface* screen, SomeVals* vals) ;
-	void encounter(Enemy* enemy, Character* character, Interface* screen) ;*/
-
+	
 };

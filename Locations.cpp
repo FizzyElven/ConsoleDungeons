@@ -3,39 +3,25 @@
 Locations::Locations()
 {
 	this->locationCounter = 0;
+	bossDefeated = false;
 	locationName = "none";
 }
 
 Locations::Locations(Character* character, Interface* screen, SomeVals* vals)
 {
 	this->locationCounter = 0;
+	bossDefeated = false;
 	locationName = "none";
 }
 
 Forest::Forest(Character* character, Interface* screen, SomeVals* vals)
 {
 	locationName = "forest";
+	bossDefeated = false;
 	this->locationCounter = 0;
 	journey(character, screen, vals);
 	
 }
-
-//void Forest::battle(Character* character, Enemy* enemy, Interface* screen)
-//{
-//
-//}
-//
-//void Forest::BossFight()
-//{
-//}
-//
-//void Forest::moveForward(Character* character, Interface* screen, SomeVals* vals)
-//{
-//}
-//
-//void Forest::encounter(Enemy* enemy, Character* character, Interface* screen)
-//{
-//}
 
 void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 {
@@ -80,7 +66,7 @@ void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 		} while (vals->travel == true && this->locationCounter != 30);
 		if (this->locationCounter >= 30)
 		{
-			BossFight();
+			bossFight(character, screen);
 		}
 	}
 }
@@ -206,6 +192,28 @@ void Locations::chest(Character* character, Interface* screen)
 	} while (chestChoice != '1' && chestChoice != '2');
 }
 
-void Locations::BossFight()
+void Locations::bossFight(Character* character, Interface* screen)
 {
+	cout << "Location completed, now you need to defeat boss" << endl;
+	Sleep(1000);
+	if (locationName == "forest") {
+		ForestBoss* boss = new ForestBoss;
+		encounter(boss, character, screen);
+		bossDefeated = true;
+		cout << "You kill first of 3 bosses needed!" << endl;
+		Sleep(1000);
+		delete boss;
+	}
+	else if (locationName == "swamp") {
+		ForestEnemy* enemy = new ForestEnemy;
+		encounter(enemy, character, screen);
+		bossDefeated = true;
+		delete enemy;
+	}
+	else if (locationName == "dead town") {
+		ForestEnemy* enemy = new ForestEnemy;
+		encounter(enemy, character, screen);
+		bossDefeated = true;
+		delete enemy;
+	}
 }

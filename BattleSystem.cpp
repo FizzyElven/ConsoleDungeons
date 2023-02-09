@@ -11,7 +11,6 @@ BattleSystem::~BattleSystem()
 
 void BattleSystem::battle(Character* character, Enemy* enemy, Interface* screen)
 {
-	//char k;
 	combat = true;
 	character->isEscape = false;
 	do {
@@ -71,7 +70,9 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* scr
 			}
 			else
 			{
+				cout << "You take " << (enemy->dmg - character->defence+10) << " damage" << endl;
 				character->setHp(character->getHp() - (enemy->dmg - (character->defence + 10)));
+				Sleep(1000);
 			}
 		}
 		else
@@ -83,7 +84,9 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* scr
 			}
 			else
 			{
+				cout << "You take " << (enemy->dmg - character->defence) << " damage" << endl;
 				character->setHp(character->getHp() - (enemy->dmg - character->defence));
+				Sleep(1000);
 			}
 		}
 		if (character->getHp() <= 0)

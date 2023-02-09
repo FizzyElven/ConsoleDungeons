@@ -72,3 +72,22 @@ Enemy::~Enemy()
 	cout << "Enemy destructed" << endl;
 }
 
+Boss::Boss()
+{
+	this->name = "Boss";
+	this->exp = 0;
+	this->hp = 0;
+	this->maxHp = 0;
+	this->dmg = 0;
+	this->critDmg = 0;
+}
+
+ForestBoss::ForestBoss()
+{
+	this->name = "Ogre";
+	this->exp = 500;
+	this->hp = 500;
+	this->maxHp = 500;
+	this->dmg = 40;
+	this->critDmg = 120;
+}

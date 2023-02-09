@@ -221,7 +221,7 @@ void Character::rest()
 {
 	if (getHp() <= getMaxHp() - (10*getLevel())) 
 	{
-		cout << "You have restored"<< 10*getLevel() << "hp" << endl;
+		cout << "You have restored "<< 10*getLevel() << "hp" << endl;
 		heal(10*getLevel());
 	}
 	else
@@ -245,9 +245,9 @@ void Character::rest()
 	}
 	else if (getClass() == "mage")
 	{
-		if (getMp() <= getMaxMp() - 20) {
-			cout << "You have recovered 20mp" << endl;
-			restoreMp(20);
+		if (getMp() <= getMaxMp() - 50) {
+			cout << "You have recovered 50mp" << endl;
+			restoreMp(50);
 		}
 		else {
 			cout << "You have recovered " << getMaxMp() - getMp() << "mp" << endl;

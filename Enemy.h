@@ -29,3 +29,17 @@ class ForestEnemy : public Enemy
 public:
 	ForestEnemy();
 };
+
+class Boss :public Enemy
+{
+
+public:
+	Boss();
+};
+
+class ForestBoss : public Boss
+{
+
+public:
+	ForestBoss();
+};

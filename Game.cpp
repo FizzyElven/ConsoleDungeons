@@ -3,6 +3,9 @@
 Game::Game()
 {
 	isPlay = true;
+	firstBossKilled = false;
+	secondBossKilled = false;
+	thirdBossKilled = false;
 }
 
 Game::~Game()
@@ -15,9 +18,9 @@ void Game::base(Character *character, Interface *screen, SomeVals *vals)
 	char choice;
 	do {
 		cout << "You on base now" << endl;
-		cout << "1. Go to forest" << endl;
-		cout << "2. Go to swamp" << endl;
-		cout << "3. Go to dead town" << endl;
+		cout << "1. Go to forest (recommended lvl 1-5)" << endl;
+		cout << "2. Go to swamp (recommended lvl 5-10)" << endl;
+		cout << "3. Go to dead town (recommended lvl 10-15)" << endl;
 		cout << "4. Rest" << endl;
 		cout << "5. Surrender and exit game" << endl;
 		cin >> choice;
@@ -25,6 +28,7 @@ void Game::base(Character *character, Interface *screen, SomeVals *vals)
 		case '1':
 		{
 			Forest *forest = new Forest(character, screen, vals);
+			if (forest->bossDefeated == true) { firstBossKilled = true; }
 			//forest(character, screen);
 			delete forest;
 			break;

@@ -30,3 +30,19 @@ public:
 	Forest(Character* character, Interface* screen, SomeVals* vals);
 	
 };
+class Swamp :public Locations
+{
+private:
+
+public:
+	Swamp(Character* character, Interface* screen, SomeVals* vals);
+
+};
+class DeadTown :public Locations
+{
+private:
+
+public:
+	DeadTown(Character* character, Interface* screen, SomeVals* vals);
+
+};

@@ -30,16 +30,35 @@ public:
 	ForestEnemy();
 };
 
-class Boss :public Enemy
+class SwampEnemy : public Enemy
 {
 
 public:
-	Boss();
+	SwampEnemy();
 };
 
-class ForestBoss : public Boss
+class DeadTownEnemy : public Enemy
+{
+
+public:
+	DeadTownEnemy();
+};
+
+class ForestBoss : public Enemy
 {
 
 public:
 	ForestBoss();
+};
+class SwampBoss : public Enemy
+{
+
+public:
+	SwampBoss();
+};
+class DeadTownBoss : public Enemy
+{
+
+public:
+	DeadTownBoss();
 };

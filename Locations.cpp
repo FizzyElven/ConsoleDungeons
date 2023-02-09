@@ -22,6 +22,22 @@ Forest::Forest(Character* character, Interface* screen, SomeVals* vals)
 	journey(character, screen, vals);
 	
 }
+Swamp::Swamp(Character* character, Interface* screen, SomeVals* vals)
+{
+	locationName = "swamp";
+	bossDefeated = false;
+	this->locationCounter = 0;
+	journey(character, screen, vals);
+
+}
+DeadTown::DeadTown(Character* character, Interface* screen, SomeVals* vals)
+{
+	locationName = "dead town";
+	bossDefeated = false;
+	this->locationCounter = 0;
+	journey(character, screen, vals);
+
+}
 
 void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 {
@@ -104,12 +120,12 @@ void Locations::meetMonster(Character* character, Interface* screen)
 		delete enemy;
 	}
 	else if (locationName == "swamp") {
-		ForestEnemy* enemy = new ForestEnemy;
+		SwampEnemy* enemy = new SwampEnemy;
 		encounter(enemy, character, screen);
 		delete enemy;
 	}
 	else if (locationName == "dead town") {
-		ForestEnemy* enemy = new ForestEnemy;
+		DeadTownEnemy* enemy = new DeadTownEnemy;
 		encounter(enemy, character, screen);
 		delete enemy;
 	}
@@ -196,6 +212,7 @@ void Locations::bossFight(Character* character, Interface* screen)
 {
 	cout << "Location completed, now you need to defeat boss" << endl;
 	Sleep(1000);
+	system("pause");
 	if (locationName == "forest") {
 		ForestBoss* boss = new ForestBoss;
 		encounter(boss, character, screen);
@@ -205,15 +222,19 @@ void Locations::bossFight(Character* character, Interface* screen)
 		delete boss;
 	}
 	else if (locationName == "swamp") {
-		ForestEnemy* enemy = new ForestEnemy;
+		SwampBoss* enemy = new SwampBoss;
 		encounter(enemy, character, screen);
 		bossDefeated = true;
+		cout << "You kill second of 3 bosses needed!" << endl;
+		Sleep(1000);
 		delete enemy;
 	}
 	else if (locationName == "dead town") {
-		ForestEnemy* enemy = new ForestEnemy;
+		DeadTownBoss* enemy = new DeadTownBoss;
 		encounter(enemy, character, screen);
 		bossDefeated = true;
+		cout << "You kill third of 3 bosses needed!" << endl;
+		Sleep(1000);
 		delete enemy;
 	}
 }

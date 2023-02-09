@@ -29,18 +29,21 @@ void Game::base(Character *character, Interface *screen, SomeVals *vals)
 		{
 			Forest *forest = new Forest(character, screen, vals);
 			if (forest->bossDefeated == true) { firstBossKilled = true; }
-			//forest(character, screen);
 			delete forest;
 			break;
 		}
 		case '2':
 		{
-			;
+			Swamp* swamp = new Swamp(character, screen, vals);
+			if (swamp->bossDefeated == true) { secondBossKilled = true; }
+			delete swamp;
 			break;
 		}
 		case '3':
 		{
-			;
+			DeadTown* deadTown = new DeadTown(character, screen, vals);
+			if (deadTown->bossDefeated == true) { thirdBossKilled = true; }
+			delete deadTown;
 			break;
 		}
 		case '4':

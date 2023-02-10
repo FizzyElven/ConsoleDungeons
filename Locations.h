@@ -12,6 +12,8 @@ public:
 	Locations();
 	Locations(Character* character, Interface* screen, SomeVals* vals);
 	int locationCounter;
+	int neededLocCounter;
+	void beforeBossfight(Character* character);
 	string locationName;
 	bool bossDefeated;
 	void bossFight(Character* character, Interface* screen);

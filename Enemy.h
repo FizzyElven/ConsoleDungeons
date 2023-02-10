@@ -13,7 +13,6 @@ public:
 	string name;
 	Enemy();
 	virtual ~Enemy();
-	
 };
 
 class ChestEnemy :public Enemy

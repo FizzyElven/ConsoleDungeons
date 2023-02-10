@@ -89,5 +89,4 @@ private:
 	int level, xp, xpToUp, hp, totalHp, 
 		maxHp, mana, stamina, arrows,
 		maxMana, maxStamina, maxArrows;
-
 };

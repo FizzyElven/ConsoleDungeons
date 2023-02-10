@@ -13,4 +13,3 @@ public:
 	bool travel;
 	unsigned int rVal;
 };
-

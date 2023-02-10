@@ -76,7 +76,7 @@ SwampEnemy::SwampEnemy()
 		this->exp = 100;
 		this->hp = 150;
 		this->maxHp = 150;
-		this->dmg = 20;
+		this->dmg = 25;
 		this->critDmg = 30;
 	}
 	else if (rEnemy == 2)
@@ -239,18 +239,18 @@ SwampBoss::SwampBoss()
 {
 	this->name = "Hydra";
 	this->exp = 1000;
-	this->hp = 800;
-	this->maxHp = 800;
-	this->dmg = 99;
+	this->hp = 750;
+	this->maxHp = 750;
+	this->dmg = 60;
 	this->critDmg = 999;
 }
 
 DeadTownBoss::DeadTownBoss()
 {
 	this->name = "Lich";
-	this->exp = 1000;
+	this->exp = 1500;
 	this->hp = 1000;
-	this->maxHp = 1500;
-	this->dmg = 125;
+	this->maxHp = 1000;
+	this->dmg = 75;
 	this->critDmg = 999;
 }

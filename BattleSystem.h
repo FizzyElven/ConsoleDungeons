@@ -5,7 +5,6 @@
 #include "SomeVals.h"
 #include < stdlib.h >
 
-
 class BattleSystem
 {
 private:

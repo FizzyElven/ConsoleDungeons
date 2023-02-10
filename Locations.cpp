@@ -3,6 +3,7 @@
 Locations::Locations()
 {
 	this->locationCounter = 0;
+	neededLocCounter = 0;
 	bossDefeated = false;
 	locationName = "none";
 }
@@ -10,8 +11,19 @@ Locations::Locations()
 Locations::Locations(Character* character, Interface* screen, SomeVals* vals)
 {
 	this->locationCounter = 0;
+	neededLocCounter = 0;
 	bossDefeated = false;
 	locationName = "none";
+}
+
+void Locations::beforeBossfight(Character* character)
+{
+	cout << "You rest before the bossfight..." << endl;
+	character->setHp(character->getMaxHp());
+	character->setStamina(character->getMaxStamina());
+	character->setMana(character->getMaxMp());
+	character->setArrows(character->getMaxArrows());
+	Sleep(1000);
 }
 
 Forest::Forest(Character* character, Interface* screen, SomeVals* vals)
@@ -19,6 +31,7 @@ Forest::Forest(Character* character, Interface* screen, SomeVals* vals)
 	locationName = "forest";
 	bossDefeated = false;
 	this->locationCounter = 0;
+	neededLocCounter = 30;
 	journey(character, screen, vals);
 	
 }
@@ -27,6 +40,7 @@ Swamp::Swamp(Character* character, Interface* screen, SomeVals* vals)
 	locationName = "swamp";
 	bossDefeated = false;
 	this->locationCounter = 0;
+	neededLocCounter = 50;
 	journey(character, screen, vals);
 
 }
@@ -35,6 +49,7 @@ DeadTown::DeadTown(Character* character, Interface* screen, SomeVals* vals)
 	locationName = "dead town";
 	bossDefeated = false;
 	this->locationCounter = 0;
+	neededLocCounter = 75;
 	journey(character, screen, vals);
 
 }
@@ -79,9 +94,10 @@ void Locations::journey(Character* character, Interface* screen, SomeVals* vals)
 				cout << "invalid choice" << endl;
 				Sleep(500);
 			}
-		} while (vals->travel == true && this->locationCounter != 30);
-		if (this->locationCounter >= 30)
+		} while (vals->travel == true && this->locationCounter != this->neededLocCounter);
+		if (this->locationCounter >= this->neededLocCounter)
 		{
+			beforeBossfight(character);
 			bossFight(character, screen);
 		}
 	}
@@ -105,8 +121,9 @@ void Locations::moveForward(Character* character, Interface* screen, SomeVals* v
 	{
 		cout << "You find a chest" << endl;
 		chest(character, screen);
-		Sleep(1000);
 		this->locationCounter++;
+		Sleep(1000);
+		
 	}
 }
 
@@ -219,6 +236,7 @@ void Locations::bossFight(Character* character, Interface* screen)
 		bossDefeated = true;
 		cout << "You kill first of 3 bosses needed!" << endl;
 		Sleep(1000);
+		system("pause");
 		delete boss;
 	}
 	else if (locationName == "swamp") {
@@ -227,6 +245,7 @@ void Locations::bossFight(Character* character, Interface* screen)
 		bossDefeated = true;
 		cout << "You kill second of 3 bosses needed!" << endl;
 		Sleep(1000);
+		system("pause");
 		delete enemy;
 	}
 	else if (locationName == "dead town") {
@@ -235,6 +254,7 @@ void Locations::bossFight(Character* character, Interface* screen)
 		bossDefeated = true;
 		cout << "You kill third of 3 bosses needed!" << endl;
 		Sleep(1000);
+		system("pause");
 		delete enemy;
 	}
 }

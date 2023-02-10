@@ -53,13 +53,21 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* scr
 	}
 	case '3':
 	{
-		character->escape(enemy);
-		Sleep(1000);
+		if (enemy->name != "Ogre" && enemy->name != "Hydra" && enemy->name != "Lich")
+		{
+			character->escape(enemy);
+			Sleep(1000);
+		}
+		else 
+		{
+			cout << "You cant escape from bossfight!" << endl;
+			Sleep(1000);
+		}
 		break;
 	}
 	default: {cout << "Invalid choice" << endl; break; }
 	}
-	if (enemy->hp > 0)
+	if (enemy->hp > 0 && character->isEscape != true)
 	{
 		if (i == '2')
 		{
@@ -70,7 +78,7 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* scr
 			}
 			else
 			{
-				cout << "You take " << (enemy->dmg - character->defence+10) << " damage" << endl;
+				cout << "You take " << (enemy->dmg - (character->defence+10)) << " damage" << endl;
 				character->setHp(character->getHp() - (enemy->dmg - (character->defence + 10)));
 				Sleep(1000);
 			}
@@ -91,15 +99,18 @@ void BattleSystem::battleMenu(Character* character, Enemy* enemy, Interface* scr
 		}
 		if (character->getHp() <= 0)
 		{
+			system("CLS");
+			screen->hud(character);
+			screen->enemyHud(enemy);
 			cout << "YOU DIED!" << endl;
 			system("pause");
 			exit(EXIT_SUCCESS);
 		}
 	}
 	//Stamina restoration
-	if (character->getStamina() <= character->getMaxStamina() - 5)
+	if (character->getStamina() <= character->getMaxStamina() - 10)
 	{
-		character->setStamina(character->getStamina() + 5);
+		character->setStamina(character->getStamina() + 10);
 	}
 	else character->setStamina(character->getMaxStamina());
 	//Mana restoration

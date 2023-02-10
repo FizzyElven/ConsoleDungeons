@@ -48,7 +48,7 @@ void Interface::enemyHud(Enemy* enemy)
 {
 	// Draws top border
 	setcur(25, 0);
-	cout << "====================";
+	cout << "=====================================";
 	cout << endl;
 	//STATS
 	setcur(25, 1);
@@ -57,13 +57,13 @@ void Interface::enemyHud(Enemy* enemy)
 	cout << "| HP: " << enemy->hp<< "/" << enemy->maxHp << endl;
 	for (int i = 1; i < 3; i++)
 	{
-		setcur(43, i);
+		setcur(60, i);
 		cout << " |";
 	}
 	cout << endl;
 	// Draws bottom border
 	setcur(25, 3);
-	cout << "====================";
+	cout << "=====================================";
 	cout << endl;
 	setcur(0, 10);
 }

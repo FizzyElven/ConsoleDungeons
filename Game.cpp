@@ -28,21 +28,40 @@ void Game::base(Character *character, Interface *screen, SomeVals *vals)
 		case '1':
 		{
 			Forest *forest = new Forest(character, screen, vals);
-			if (forest->bossDefeated == true) { firstBossKilled = true; }
+			if (forest->bossDefeated == true) 
+			{ 
+				firstBossKilled = true; 
+				cout << "You get ogre's belt (+50hp)";
+				character->setMaxHp(character->getMaxHp() + 50);
+				character->setHp(character->getMaxHp());
+				Sleep(1000);
+			}
 			delete forest;
 			break;
 		}
 		case '2':
 		{
 			Swamp* swamp = new Swamp(character, screen, vals);
-			if (swamp->bossDefeated == true) { secondBossKilled = true; }
+			if (swamp->bossDefeated == true) 
+			{ 
+				secondBossKilled = true; 
+				cout << "You get hydra scale armor (+10 defence)";
+				character->defence+= 10;
+				Sleep(1000);
+			}
 			delete swamp;
 			break;
 		}
 		case '3':
 		{
 			DeadTown* deadTown = new DeadTown(character, screen, vals);
-			if (deadTown->bossDefeated == true) { thirdBossKilled = true; }
+			if (deadTown->bossDefeated == true) 
+			{ 
+				thirdBossKilled = true; 
+				cout << "You get Lich ring (+25 dmg)";
+				character->dmg += 25;
+				Sleep(1000);
+			}
 			delete deadTown;
 			break;
 		}

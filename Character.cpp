@@ -40,9 +40,9 @@ void Character::selectClass()
 			this->hp = 200;
 			this->totalHp = 200;
 			this->maxHp = 200;
-			this->stamina = 125;
-			this->maxStamina = 125;
-			this->dmg = 10;
+			this->stamina = 150;
+			this->maxStamina = 150;
+			this->dmg = 15;
 			this->defence = 8;
 			break;
 		}
@@ -54,11 +54,11 @@ void Character::selectClass()
 			this->maxHp = totalHp;
 			this->xp = 0;
 			this->xpToUp = 100;
-			this->stamina = 100;
-			this->maxStamina = 100;
+			this->stamina = 125;
+			this->maxStamina = 125;
 			this->arrows = 30;
 			this->maxArrows = 30;
-			this->dmg = 15;
+			this->dmg = 18;
 			this->defence = 4;
 			break;
 		}
@@ -70,10 +70,10 @@ void Character::selectClass()
 			this->maxHp = totalHp;
 			this->xp = 0;
 			this->xpToUp = 100;
-			this->mana = 100;
-			this->maxMana = 100;
-			this->stamina = 100;
-			this->maxStamina = 100;
+			this->mana = 120;
+			this->maxMana = 120;
+			this->stamina = 120;
+			this->maxStamina = 120;
 			this->dmg = 20;
 			this->defence = 1;
 			break;

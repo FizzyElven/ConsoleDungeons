@@ -28,13 +28,12 @@ int main()
 	
 	while (game.isPlay) 
 	{
-	system("CLS");
+	system("CLS"); 
 	screen.hud(&player);
 	game.base(&player, &screen, &vals);
 	Sleep(1000);
 	}
 }
-
 void color(int color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
